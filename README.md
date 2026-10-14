@@ -80,3 +80,8 @@ The manual is written in DocBook XML under [`opennlp-addons-docs/src/docbkx`](op
 ## Contributing
 
 Every contribution is welcome, from a documentation typo fix to a new add-on. To get involved, please follow the instructions [here](https://github.com/apache/opennlp/blob/main/.github/CONTRIBUTING.md)
+
+## Working with this fork
+
+See the [fork guide](FORK_GUIDE.md) for the current module inventory,
+manual build commands, and the boundary between implemented and proposed features.
