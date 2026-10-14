@@ -25,7 +25,7 @@ Welcome to Apache OpenNLP Add-ons!
 
 Apache OpenNLP Add-ons is a set of optional components built on the Apache OpenNLP API.
 
-Each add-on is published as its own Maven artifact, so an application can take a single integration without taking the dependencies of the others. Shared contracts stay in OpenNLP core; an implementation belongs here when it needs a distinct model format, external data, or an optional third-party library.
+The intended layout gives each add-on its own Maven artifact, so an application can take a single integration without taking the dependencies of the others. Shared contracts stay in OpenNLP core; an implementation belongs here when it needs a distinct model format, external data, or an optional third-party library.
 
 ## Useful Links
 
@@ -42,26 +42,17 @@ Currently, the repository has the following modules:
 
 ## Getting Started
 
-Depend on the module you need, not on the parent `opennlp-addons` POM:
+The current reactor contains only `opennlp-addons-docs`; it does not contain
+an add-on implementation to import into an application. The
+[module catalog](opennlp-addons-docs/src/docbkx/modules.xml) explains that former
+add-ons were removed because core OpenNLP or maintained replacements cover
+their functionality.
 
-#### Maven
-
-```
-<dependency>
-    <groupId>org.apache.opennlp.addons</groupId>
-    <artifactId>${addon.artifactId}</artifactId>
-    <version>${opennlp-addons.version}</version>
-</dependency>
-```
-
-#### Gradle
-
-```
-compile group: "org.apache.opennlp.addons", name: "${addon.artifactId}", version: "${opennlp-addons.version}"
-```
-
-> [!NOTE]
-> No 3.x add-ons release is published yet. Until one is, build this repository locally to use its artifacts.
+The parent `opennlp-addons` has `pom` packaging. Building it locally builds the
+manual and parent metadata, not a combined runtime toolkit. Consult the
+[usage chapter](opennlp-addons-docs/src/docbkx/using-addons.xml) when choosing
+an implementation; do not treat placeholder artifact names as available
+Maven coordinates.
 
 ## Building OpenNLP Add-ons
 
@@ -73,9 +64,19 @@ After cloning the repository go into the destination directory and run:
 mvn install
 ```
 
-A `verify` build additionally runs Checkstyle, forbidden API checks, the RAT license header check, and a dependency license report. Use `-Pjacoco` for coverage.
+The `verify` phase (also included by `mvn install`) runs Checkstyle, forbidden API checks, the RAT license header check, and a dependency license report. Use `-Pjacoco` for coverage.
 
-The manual is written in DocBook XML under [`opennlp-addons-docs/src/docbkx`](opennlp-addons-docs/src/docbkx) and builds with the rest of the reactor.
+The manual is written in DocBook XML under [`opennlp-addons-docs/src/docbkx`](opennlp-addons-docs/src/docbkx) and builds with the rest of the reactor. The
+[documentation POM](opennlp-addons-docs/pom.xml) enables `doc-manual-html` and
+`doc-manual-pdf` by default and binds both generators to `package`.
+For an HTML-only manual build from the repository root, select the HTML
+profile explicitly:
+
+```sh
+mvn -pl opennlp-addons-docs -am package -Pdoc-manual-html
+```
+
+This is documentation generation, not an add-on runtime or training test.
 
 ## Contributing
 

@@ -6,7 +6,7 @@ This guide describes the public `hsoliwal/opennlp-addons` fork at [`51960cb6bef8
 
 ## Current implementation boundary
 
-The checked-in reactor contains a parent POM and one documentation module. It currently ships **no executable add-on modules and no Java source packages**. This is explicitly stated in the manual's [module catalog](opennlp-addons-docs/src/docbkx/modules.xml). The generic dependency examples in the README and manual describe the intended add-on structure; their placeholder artifact names are not installable components.
+The checked-in reactor contains a parent POM and one documentation module. It currently ships **no executable add-on modules and no Java source packages**. This is explicitly stated in the manual's [module catalog](opennlp-addons-docs/src/docbkx/modules.xml). The generic dependency examples in the manual describe the intended add-on structure; their placeholder artifact names are not installable components.
 
 Neither the parent POM nor the manual JAR supplies an NLP runtime. Use a concrete, published OpenNLP core artifact when the goal is to process text. Do not infer that former add-ons still exist here from repository history or the project name.
 
