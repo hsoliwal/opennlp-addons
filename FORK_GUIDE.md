@@ -59,3 +59,17 @@ Before proposing one:
 All current projects, modules and manual entry points are indexed above. Java package documentation is not applicable because no Java source is present. Future modules require real API documentation, examples and tests; the existence of this inventory does not satisfy those requirements.
 
 On a new upstream snapshot, recheck the parent `<modules>`, every child POM, Java source roots and the manual catalog together. Record the new commit and explain any disagreement between the README and actual source.
+
+## Troubleshooting the manual build
+
+- **Maven is unavailable:** this snapshot has no wrapper. Use an installed Maven
+  matching the building chapter, and check its selected JDK with `mvn -version`.
+- **Only one output format appears:** the documentation POM uses default HTML and
+  PDF profiles. Explicitly selecting one documentation profile deactivates the
+  other default profile; use the default manual command above to request both.
+- **A chapter or cross-reference is missing:** inspect the includes in
+  `opennlp-addons.xml`, XML namespaces, and chapter IDs, then rebuild cleanly and
+  inspect the generated output.
+- **A dependency placeholder does not resolve:** choose a real implementation
+  artifact from the module inventory. This snapshot contains only documentation,
+  so the generic add-on dependency example is not an installable NLP component.
