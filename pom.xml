@@ -373,6 +373,9 @@
                                 <exclude>.gitattributes</exclude>
                                 <!-- A NOTICE fragment, which carries no license header of its own. -->
                                 <exclude>src/license/NOTICE.template</exclude>
+                                <!-- Generated agent-policy document: a hash-pinned output of the Synexia
+                                     fleet-merge-policy recipe. Adding a header here would break that pin. -->
+                                <exclude>AGENTS.md</exclude>
                             </excludes>
                         </configuration>
                     </execution>
